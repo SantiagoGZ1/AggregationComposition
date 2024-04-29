@@ -5,35 +5,39 @@ public class House {
   private int counterRooms;
   private int maxCapacity;
 
-  public House(Room[] rooms, int counterRooms, int maxCapacity) {
-    this.rooms = new Room[maxCapacity];
+  public House(Room[] rooms, int maxCapacity) {
+    this.rooms = rooms;
     this.counterRooms = 0;
-    this.maxCapacity = 100;
+    this.maxCapacity = maxCapacity;
   }
 
   //Metodos
-  public void AddRoom(Room room){
+  public void addRoom(Room room){
     if (counterRooms < rooms.length){
       System.out.println("There are spare rooms");
       rooms[counterRooms] = room;
       counterRooms++;
     }else{
       System.out.println("There are not spare rooms");
-      System.exit(0);
     }
   }
 
-  public void destroyHouse(){ //Delete all rooms
+
+public void destoryHouse(){
     for (int i = 0; i < counterRooms; i++){
-      rooms[i] = null;
+      rooms[i]= rooms[0];
     }
-    counterRooms = 0;
-  }
+    counterRooms= 0;
+    maxCapacity = 0;
+  System.out.println("Rooms were destroyed");
+}
 
 //TODO finish to print all of house information
   public String showHouseInfo(){
+    int emptyRooms = maxCapacity - counterRooms;
     return "Number max of rums: " + maxCapacity + "\n" +
-        "Occupied rooms: " + counterRooms;
+        "Occupied rooms: " + counterRooms + "\n" +
+        "Empty Rooms: " + emptyRooms ;
   }
 
 }
